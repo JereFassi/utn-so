@@ -33,29 +33,33 @@ utn-so/
 ## ⚙️ Requisitos Previos
 Para ejecutar los ejemplos, asegúrate de tener instalado:
 - Sistema operativo compatible (Linux - Ubuntu recomendado).
+
   ```bash
   # Actualiza el administrador de paquetes de Ubuntu
   sudo apt update
   ```
 - [GCC](https://gcc.gnu.org/) o cualquier compilador compatible
+
   ```bash
   # Instalar GCC en Ubuntu
   sudo apt install build-essential
   gcc --version  # Verificar la instalación
   ```
 - [Git](https://git-scm.com/) para clonar el repositorio
+
   ```bash
   # Instalar Git en Ubuntu
   sudo apt install git
   git --version  # Verificar la instalación
   ```
 - [Nano](https://www.nano-editor.org/) (incluido, para entornos sin interfaz gráfica)
+
   ```bash
   # Instalar Git en Ubuntu
   sudo apt install nano
   nano --version  # Verificar la instalación
   ```
-- [Visual Studio Code](https://code.visualstudio.com/) (opcional, para)
+- [Visual Studio Code](https://code.visualstudio.com/) (opcional, para entornos gráficos)
 
 ## 🚀 Instalación y Uso
 
