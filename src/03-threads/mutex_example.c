@@ -17,15 +17,13 @@ void *thread_function(void *arg) {
         shared_counter++;
         printf("Thread %d: counter = %d\n", thread_id, shared_counter);
         pthread_mutex_unlock(&mutex);
-        // usleep(100000); // 100ms delay
-        usleep(rand() % 500000); // Random delay up to 500ms
+        usleep(100000); // 100ms delay
     }
     
     pthread_exit(NULL);
 }
 
 int main() {
-    srand(time(NULL));  // Initialize random number generator
     pthread_t threads[NUM_THREADS];
     int thread_ids[NUM_THREADS];
 

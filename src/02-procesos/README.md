@@ -1,5 +1,51 @@
+## Fork Example Explanation
+
+This example demonstrates process creation and management using fork() in C:
+
+### Key Components
+
+1. **Process Creation**
+   ```c
+   pid_t pid = fork();
+   ```
+   Creates a new child process that is an exact copy of the parent process.
+
+2. **Process Identification**
+   ```c
+   printf("Child process %d (PID: %d, Parent PID: %d) starting...\n", 
+          i + 1, getpid(), getppid());
+   ```
+   Shows how to identify processes using:
+   - `getpid()`: Get current process ID
+   - `getppid()`: Get parent process ID
+
+3. **Process Synchronization**
+   ```c
+   while ((pid = wait(&status)) > 0) {
+       printf("Child process (PID: %d) finished with status %d\n", 
+              pid, WEXITSTATUS(status));
+   }
+   ```
+   Parent process waits for all child processes to complete using `wait()`.
+
+### Compilation and Execution
 ```bash
-# Compile process example
+# Compile the example
 gcc src/02-procesos/fork_example.c -o fork_example
+
+# Run the program
 ./fork_example
 ```
+
+### Expected Output
+```
+Parent process (PID: xxxx) starting...
+Child process 1 (PID: yyyy, Parent PID: xxxx) starting...
+Child process 2 (PID: zzzz, Parent PID: xxxx) starting...
+Child process 3 (PID: wwww, Parent PID: xxxx) starting...
+Child process (PID: yyyy) finished with status 0
+Child process (PID: zzzz) finished with status 0
+Child process (PID: wwww) finished with status 0
+```
+
+Note: The actual PIDs will be different on each run.
