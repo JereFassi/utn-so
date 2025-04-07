@@ -17,8 +17,7 @@ int main() {
             fprintf(stderr, "Fork failed\n");
             exit(1);
         } else if (pid == 0) {
-            printf("Child process %d (PID: %d, Parent PID: %d) starting...\n", 
-                   i + 1, getpid(), getppid());
+            printf("Child process %d (PID: %d, Parent PID: %d) starting...\n", i + 1, getpid(), getppid());
             sleep(2);
             exit(0);
         }
@@ -26,8 +25,7 @@ int main() {
 
     // Parent waits for all children
     while ((pid = wait(&status)) > 0) {
-        printf("Child process (PID: %d) finished with status %d\n", 
-               pid, WEXITSTATUS(status));
+        printf("Child process (PID: %d) finished with status %d\n", pid, WEXITSTATUS(status));
     }
 
     return 0;

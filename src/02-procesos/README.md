@@ -49,3 +49,51 @@ Child process (PID: wwww) finished with status 0
 ```
 
 Note: The actual PIDs will be different on each run.
+
+---
+
+## Fork & Exec Example Explanation
+
+This example demonstrates process creation and command execution using fork() and exec() in C:
+
+### Key Components
+
+1. **Process Creation**
+   ```c
+   pid_t pid = fork();
+   ```
+   Creates a new child process that is an exact copy of the parent process.
+
+2. **Command Execution**
+   ```c
+   execlp("/bin/ls", "ls", NULL);
+   ```
+   Child process executes the 'ls' command:
+   - `execlp`: Executes a file using PATH environment variable
+   - First argument: Path to executable
+   - Second argument: Program name
+   - NULL: Ends argument list
+
+3. **Parent Waiting**
+   ```c
+   wait(NULL);
+   printf("Child Complete \n");
+   ```
+   Parent process waits for child to complete before continuing.
+
+### Compilation and Execution
+```bash
+# Compile the example
+gcc src/02-procesos/fork2_example.c -o fork2_example
+
+# Run the program
+./fork2_example
+```
+
+### Expected Output
+```
+[Directory listing from ls command]
+Child Complete
+```
+
+Note: The actual directory listing will depend on your current directory contents.
