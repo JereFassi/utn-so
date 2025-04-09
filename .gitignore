@@ -1,0 +1,10 @@
+# Executable files
+*.exe
+*.out
+
+# Build directories
+/build/
+/bin/
+
+# Debug files
+*.dSYM/
