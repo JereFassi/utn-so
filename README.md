@@ -1,4 +1,4 @@
-# UTN-SO
+# UTN-TUP - Arquitectura y Sistemas Operativos
 
 <div align="center">
 
