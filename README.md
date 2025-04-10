@@ -101,10 +101,14 @@ Para ejecutar los ejemplos, asegúrate de tener instalado:
 Este proyecto está bajo la licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## ✉️ Contacto
-- **Autor**: Jeremías Fassi y Javier E. Kinter
-- **Email**: jeremiasfassi@gmail.com  javierekinter@gmail.com
-- **GitHub**: [@JereFassi](https://github.com/JereFassi)  [@JEKinter](https://github.com/JEKinter)  
-- **LinkedIn**: [Jeremias Fassi](https://linkedin.com/in/jeremias-fassi)
+
+### Autores
+| Nombre | GitHub | LinkedIn | Email |
+|--------|--------|----------|--------|
+| Jeremías Fassi | [@JereFassi](https://github.com/JereFassi) | [LinkedIn](https://linkedin.com/in/jeremias-fassi) | jeremiasfassi@gmail.com |
+| Javier E. Kinter | [@JEKinter](https://github.com/JEKinter) | - | javierekinter@gmail.com |
+
+O contáctanos por [Issues](https://github.com/JereFassi/utn-so/issues) de GitHub.
 
 ## 🔍 Referencias y Enlaces Útiles
 - [Documentación oficial de Linux](https://www.kernel.org/doc/)
