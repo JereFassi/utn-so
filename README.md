@@ -1,8 +1,12 @@
+<div align="center">
+
 # UTN-TUP - Arquitectura y Sistemas Operativos
+
+</div>
 
 <div align="center">
 
-![UTN Logo](https://www.frbb.utn.edu.ar/frbb/wp-content/uploads/2025/01/logo_2025_sintexto.png)
+[![UTN Logo](https://www.frbb.utn.edu.ar/frbb/wp-content/uploads/2025/01/logo_2025_sintexto.png)](https://www.frbb.utn.edu.ar/frbb/)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/JereFassi/utn-so)
 ![License](https://img.shields.io/github/license/JereFassi/utn-so)
@@ -97,9 +101,9 @@ Para ejecutar los ejemplos, asegúrate de tener instalado:
 Este proyecto está bajo la licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## ✉️ Contacto
-- **Autor**: Jeremías Fassi
-- **Email**: jeremiasfassi@gmail.com
-- **GitHub**: [@JereFassi](https://github.com/JereFassi)
+- **Autor**: Jeremías Fassi y Javier E. Kinter
+- **Email**: jeremiasfassi@gmail.com  javierekinter@gmail.com
+- **GitHub**: [@JereFassi](https://github.com/JereFassi)  [@JEKinter](https://github.com/JEKinter)  
 - **LinkedIn**: [Jeremias Fassi](https://linkedin.com/in/jeremias-fassi)
 
 ## 🔍 Referencias y Enlaces Útiles
