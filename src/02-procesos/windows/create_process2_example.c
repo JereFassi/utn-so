@@ -12,13 +12,14 @@ int main(int argc, char *argv[])
   if (argc != 2) {
     printf("Usage: %s <path-to-image>\n", argv[0]);
     printf("Example: %s C:\\Users\\Pictures\\image.jpg\n", argv[0]);
+    printf("Or use 'default' to open the default image");
     return 1;
   }
 
-  /* allocate memory */
-  ZeroMemory(&si, sizeof(si));
-  si.cb = sizeof(si);
-  ZeroMemory(&pi, sizeof(pi));
+  /* Initialize STARTUPINFO structure. Allocate memory */
+  ZeroMemory(&si, sizeof(si));  // Clear all fields to 0
+  si.cb = sizeof(si);           // Set structure size for Windows
+  ZeroMemory(&pi, sizeof(pi));  // Clear process information structure
 
   printf("Image Path: %s\n", argv[1]);
   printf("Default Image Path: %s\n", defaultImagePath);
@@ -58,17 +59,3 @@ int main(int argc, char *argv[])
   CloseHandle(pi.hProcess);
   CloseHandle(pi.hThread);
 }
-
-
-/*
-  https://www.mingw-w64.org/getting-started/msys2/
-  https://www.msys2.org/
-
-  -->  https://code.visualstudio.com/docs/cpp/config-mingw
-
-  Run PowerShell as administrator and input:
-    Get-AppxPackage -allusers Microsoft.Paint
-
-
-  C:\\Users\Usuario\\Proyectos\\utn-so\\recursos\\img\\Evolv.jpg
-*/
