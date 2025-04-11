@@ -3,13 +3,15 @@
 
 #define BUFFER_SIZE 1024
 
-int main() {
+int main()
+{
     FILE *file;
     char buffer[BUFFER_SIZE];
-    
+
     // Open file
-    file = fopen("recursos/tuc.txt", "r");
-    if (file == NULL) {
+    file = fopen("../../recursos/tup.txt", "r");
+    if (file == NULL)
+    {
         perror("Error opening file");
         return 1;
     }
@@ -18,12 +20,14 @@ int main() {
     printf("--------------------------------\n");
 
     // Read and print file content
-    while (fgets(buffer, BUFFER_SIZE, file) != NULL) {
+    while (fgets(buffer, BUFFER_SIZE, file) != NULL)
+    {
         printf("%s", buffer);
     }
 
     // Close file
-    if (fclose(file) != 0) {
+    if (fclose(file) != 0)
+    {
         perror("Error closing file");
         return 1;
     }
