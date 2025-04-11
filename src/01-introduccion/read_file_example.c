@@ -8,7 +8,7 @@ int main() {
     char buffer[BUFFER_SIZE];
     
     // Open file
-    file = fopen("src/01-introduccion/tuc.txt", "r");
+    file = fopen("recursos/tuc.txt", "r");
     if (file == NULL) {
         perror("Error opening file");
         return 1;
