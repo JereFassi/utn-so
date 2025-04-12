@@ -37,7 +37,7 @@ utn-so/
 └── README.md
 ```
 
-## ⚙️ Requisitos Previos
+## ⚙️ Requisitos Previos - Ubuntu
 
 Para ejecutar los ejemplos, asegúrate de tener instalado:
 
@@ -62,7 +62,6 @@ Para ejecutar los ejemplos, asegúrate de tener instalado:
   # Instalar Git en Ubuntu
   sudo apt install git
   git --version  # Verificar la instalación
-  git clone https://github.com/JereFassi/utn-so.git
   ```
 
 - [Nano](https://www.nano-editor.org/) (opcional para entornos sin interfaz gráfica)
@@ -74,6 +73,51 @@ Para ejecutar los ejemplos, asegúrate de tener instalado:
   ```
 
 - [Visual Studio Code](https://code.visualstudio.com/) (opcional para entornos gráficos)
+
+## ⚙️ Requisitos Previos - Windows
+
+Para configurar el entorno de desarrollo en Windows, sigue estos pasos:
+
+1. **Instalar Visual Studio Code**  
+   [Guía oficial de configuración para C/C++ en VS Code](https://code.visualstudio.com/docs/cpp/config-mingw)
+
+2. **Instalar MSYS2**  
+   Descarga e instala MSYS2 desde su sitio oficial:  
+   [https://www.msys2.org/](https://www.msys2.org/)
+
+3. **Configurar GCC**  
+   Una vez instalado MSYS2, abre el terminal de MSYS2 y ejecuta los siguientes comandos para instalar el compilador GCC:
+
+   ```bash
+   # Actualiza los paquetes de MSYS2
+   pacman -Syu
+
+   # Instala el compilador GCC y herramientas necesarias
+   pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+
+   ```
+
+4. **Agregar GCC al PATH**  
+   Agrega el directorio `bin` de MSYS2 al PATH de tu sistema para que GCC esté disponible globalmente. Sigue estos pasos:
+
+   1. Abre el menú de inicio y busca **"Editar las variables de entorno del sistema"**.
+   2. En la ventana de **Propiedades del sistema**, haz clic en el botón **"Variables de entorno"**.
+   3. En la sección **Variables del sistema**, selecciona la variable `Path` y haz clic en **Editar**.
+   4. Haz clic en **Nuevo** y agrega la ruta al directorio `bin` de MSYS2. Por ejemplo:
+      ```
+      C:\msys64\mingw64\bin
+      ```
+      El path que me funcionó a mí fue:
+      ```
+      C:\msys64\ucrt64\bin
+      ```
+   5. Guarda los cambios y cierra todas las ventanas.
+
+5. **Verificar la instalación**  
+   Abre una terminal y ejecuta el siguiente comando para verificar que GCC está instalado correctamente:
+   ```bash
+   gcc --version
+   ```
 
 ## 🚀 Instalación y Uso
 
@@ -99,7 +143,7 @@ Para ejecutar los ejemplos, asegúrate de tener instalado:
 
 1. **Procesos**: Ejemplos básicos de creación y comunicación entre procesos
 2. **Threads**: Ejemplos de programación multihilo
-3. **Memoria**: Ejemplos de gestión de memoria
+3. **Memoria**: Ejemplos de gestión de memoria (incuidos en procesos)
 
 ## 🤝 Cómo Contribuir
 

@@ -4,14 +4,17 @@ from pathlib import Path
 
 def open_paint_with_image(image_path):
   # Default image path
-  default_image = Path(r"C:\\Users\\Usuario\\Proyectos\\utn-so\\recursos\\img\\Evolv.jpg")
+  default_image = Path(r"..\\..\\..\\recursos\\img\\Evolv.jpg")
     
   # Check if using default image
   if image_path.lower() == "default":
-      image_path = str(default_image)
+    image_path = str(default_image)
     
   # Paint executable path
-  paint_path = r"C:\\Program Files\\WindowsApps\\Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe\\PaintApp\\mspaint.exe"
+  # Windows 11
+  # paint_path = r"C:\\Program Files\\WindowsApps\\Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe\\PaintApp\\mspaint.exe"
+  # Windows 10
+  paint_path = r"C:\\Windows\\system32\\mspaint.exe"
   
   print(f"Image Path: {image_path}")
   print(f"Default Image Path: {default_image}")
@@ -33,7 +36,7 @@ def main():
   if len(sys.argv) != 2:
     print(f"Usage: {sys.argv[0]} <path-to-image>")
     print(f"Example: {sys.argv[0]} C:\\Users\\Pictures\\image.jpg")
-    print(f"Or use 'default' to open the default image")
+    print("Or use 'default' to open the default image")
     return 1
 
   return open_paint_with_image(sys.argv[1])
