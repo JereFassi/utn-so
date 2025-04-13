@@ -12,9 +12,9 @@ def open_paint_with_image(image_path):
     
   # Paint executable path
   # Windows 11
-  # paint_path = r"C:\\Program Files\\WindowsApps\\Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe\\PaintApp\\mspaint.exe"
+  paint_path = r"C:\\Program Files\\WindowsApps\\Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe\\PaintApp\\mspaint.exe"
   # Windows 10
-  paint_path = r"C:\\Windows\\system32\\mspaint.exe"
+  # paint_path = r"C:\\Windows\\system32\\mspaint.exe"
   
   print(f"Image Path: {image_path}")
   print(f"Default Image Path: {default_image}")
