@@ -177,5 +177,5 @@ O contáctanos por [Issues](https://github.com/JereFassi/utn-so/issues) de GitHu
 ---
 
 <div align="center">
-Desarrollado con ❤️ para UTN-TUP
+Con ❤️ para UTN-TUP
 </div>
