@@ -9,6 +9,7 @@ docs/
 ├── clases/                         # Materiales y clases
 │   ├── Clase 1.pdf                 # Introducción a Sistemas Operativos
 │   ├── Clase 2.pdf                 # Conceptos Básicos de Procesos y Memoria
+│   ├── Clase 3.pdf                 # Procesos
 │   └── README.md                   # Guía de materiales de clase
 ├── DataStructures.md               # Guía sobre estructuras de datos
 ├── MultitaskingAndTimesharing.md   # Explicación de conceptos de multitarea
