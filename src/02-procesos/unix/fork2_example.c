@@ -1,22 +1,32 @@
-#include <sys/types.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 int main() {
-  pid_t pid;
-  /* fork a child process */
-  pid = fork();
-  if (pid < 0) { /* error occurred */
-    fprintf(stderr, "Fork Failed \n");
-    return 1;
-  }
-  else if (pid == 0) { /* child process */
-    execlp("/bin/ls","ls",NULL);
-  }
-  else { /* parent process */
-    /* parent will wait for the child to complete */
-    wait(NULL);
-    printf("Child Complete \n");
-  }
-  return 0;
+    pid_t pid;
+    int status;
+
+    printf("Parent process (PID: %d) starting...\n", getpid());
+
+    for (int i = 0; i < 3; i++) {
+        pid = fork();
+        
+        if (pid < 0) {
+            fprintf(stderr, "Fork failed\n");
+            exit(1);
+        } else if (pid == 0) {
+            printf("Child process %d (PID: %d, Parent PID: %d) starting...\n", i + 1, getpid(), getppid());
+            sleep(2);
+            exit(0);
+        }
+    }
+
+    // Parent waits for all children
+    while ((pid = wait(&status)) > 0) {
+        printf("Child process (PID: %d) finished with status %d\n", pid, WEXITSTATUS(status));
+    }
+
+    return 0;
 }
