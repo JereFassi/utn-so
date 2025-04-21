@@ -15,12 +15,12 @@ int main()
   { /* child process */
     value += 15;
     printf("CHILD: value = %d\n", value); /* LINE A */
-    return 0;
+    return 0;                             /*exit(0) equivalent*/
   }
   else if (pid > 0)
   { /* parent process */
     wait(NULL);
     printf("PARENT: value = %d\n", value); /* LINE B */
-    return 0;
+    return 0;                              /*exit(0) equivalent*/
   }
 }
