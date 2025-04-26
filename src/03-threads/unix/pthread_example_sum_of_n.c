@@ -31,3 +31,5 @@ void *runner(void *param)
   }
   pthread_exit(0);
 }
+// Compile with: gcc -o pthread_example_sum_of_n pthread_example_sum_of_n.c -lpthread
+// Run with: ./pthread_example_sum_of_n 1000000
