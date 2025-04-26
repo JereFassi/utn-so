@@ -13,7 +13,7 @@ class Summation implements Callable<Integer>
     int sum = 0;
     for (int i = 1; i <= upper; i++)
       sum += i;
-    return new Integer(sum);
+    return sum;
   }
 }
 
