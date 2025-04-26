@@ -25,7 +25,7 @@ Both commands should display version information for Java 21.
 
 ---
 
-## How to Compile and Run `executor_example.java`
+## How to Compile and Run `Driver.java`
 
 1. **Navigate to the directory:**
 
@@ -36,10 +36,10 @@ Both commands should display version information for Java 21.
 2. **Compile the Java file:**
 
    ```bash
-   javac executor_example.java
+   javac Driver.java
    ```
 
-   This will generate `executor_example.class` and possibly `Driver.class`.
+   This will generate `Driver.class` and possibly `Summation.class`.
 
 3. **Run the program:**
 
