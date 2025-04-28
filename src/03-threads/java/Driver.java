@@ -34,3 +34,5 @@ public class Driver
     }
   }
 }
+// The above code is a simple Java program that uses the Executor framework to create a thread pool and submit a task to calculate the sum of integers from 1 to a given upper limit.
+// The program defines a class `Summation` that implements the `Callable` interface, allowing it to return a result (the sum) and handle exceptions.
