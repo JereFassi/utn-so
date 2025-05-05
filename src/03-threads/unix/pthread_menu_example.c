@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,86 +8,85 @@
 #define MAX_CHOICE_LEN 16
 
 volatile int running = 1;
-char user_choice[MAX_CHOICE_LEN];
-pthread_mutex_t choice_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t choice_cond = PTHREAD_COND_INITIALIZER;
 
 void *input_thread(void *param);
-void *action_thread(void *param);
+void *action_worker(void *param);
+
+typedef struct
+{
+  char choice[MAX_CHOICE_LEN];
+} action_arg_t;
 
 int main()
 {
-    pthread_t tid_input, tid_action;
-
-    pthread_create(&tid_input, NULL, input_thread, NULL);
-    pthread_create(&tid_action, NULL, action_thread, NULL);
-
-    pthread_join(tid_input, NULL);
-    pthread_join(tid_action, NULL);
-
-    return 0;
+  pthread_t tid_input;
+  pthread_create(&tid_input, NULL, input_thread, NULL);
+  pthread_join(tid_input, NULL);
+  return 0;
 }
 
 void *input_thread(void *param)
 {
-    while (running)
+  while (running)
+  {
+    printf("\n=== Menú ===\n");
+    printf("1. Acción   1\n");
+    printf("2. Acción   2\n");
+    printf("3. Ayuda    h\n");
+    printf("q. Salir     \n");
+    printf("Elige una opción: ");
+    fflush(stdout);
+
+    char buffer[MAX_CHOICE_LEN];
+    if (fgets(buffer, sizeof(buffer), stdin) == NULL)
     {
-        printf("\n=== Menú ===\n");
-        printf("1. Acción 1\n");
-        printf("2. Acción 2\n");
-        printf("q. Salir\n");
-        printf("Elige una opción: ");
-        fflush(stdout);
-
-        char buffer[MAX_CHOICE_LEN];
-        if (fgets(buffer, sizeof(buffer), stdin) == NULL)
-        {
-            continue;
-        }
-        buffer[strcspn(buffer, "\n")] = 0; // Remove newline
-
-        pthread_mutex_lock(&choice_mutex);
-        strncpy(user_choice, buffer, MAX_CHOICE_LEN);
-        pthread_cond_signal(&choice_cond);
-        pthread_mutex_unlock(&choice_mutex);
-
-        if (strcmp(buffer, "q") == 0)
-        {
-            running = 0;
-            break;
-        }
+      continue;
     }
-    return NULL;
+    buffer[strcspn(buffer, "\n")] = 0; // Remove newline
+
+    if (strcmp(buffer, "q") == 0)
+    {
+      printf("Saliendo...\n");
+      running = 0;
+      break;
+    }
+
+    // Allocate and copy the choice for the worker thread
+    action_arg_t *arg = malloc(sizeof(action_arg_t));
+    strncpy(arg->choice, buffer, MAX_CHOICE_LEN);
+
+    pthread_t tid_worker;
+    pthread_create(&tid_worker, NULL, action_worker, arg);
+    pthread_detach(tid_worker); // Detach so resources are freed automatically
+  }
+  return NULL;
 }
 
-void *action_thread(void *param)
+void *action_worker(void *param)
 {
-    while (running)
-    {
-        pthread_mutex_lock(&choice_mutex);
-        pthread_cond_wait(&choice_cond, &choice_mutex);
-
-        if (strcmp(user_choice, "1") == 0)
-        {
-            printf("Ejecutando Acción 1...\n");
-        }
-        else if (strcmp(user_choice, "2") == 0)
-        {
-            printf("Ejecutando Acción 2...\n");
-        }
-        else if (strcmp(user_choice, "q") == 0)
-        {
-            printf("Saliendo...\n");
-            running = 0;
-        }
-        else
-        {
-            printf("Opción no válida.\n");
-        }
-
-        pthread_mutex_unlock(&choice_mutex);
-    }
-    return NULL;
+  action_arg_t *arg = (action_arg_t *)param;
+  if (strcmp(arg->choice, "1") == 0)
+  {
+    printf("Ejecutando Acción 1...\n");
+    usleep(10000000); // 10 seconds delay
+    printf("Acción 1 finalizada.\n");
+  }
+  else if (strcmp(arg->choice, "2") == 0)
+  {
+    printf("Ejecutando Acción 2...\n");
+    usleep(20000000); // 20 seconds delay
+    printf("Acción 2 finalizada.\n");
+  }
+  else if (strcmp(arg->choice, "h") == 0)
+  {
+    printf("Ayuda: Elige una opción del menú.\n");
+  }
+  else
+  {
+    printf("Opción no válida.\n");
+  }
+  free(arg);
+  return NULL;
 }
 
 // Compile with: gcc -o pthread_menu_example pthread_menu_example.c -lpthread
