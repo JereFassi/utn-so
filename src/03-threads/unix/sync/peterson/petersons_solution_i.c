@@ -21,6 +21,5 @@ void process(int i)
     // ...
   }
 }
-
-// Peterson's solution is a classic algorithm for mutual exclusion in concurrent programming.
-// It allows two processes to share a single-use resource without conflict.
+// Peterson's solution is a classic algorithm for mutual exclusion in concurrent
+// programming. It allows two processes to share a single-use resource without conflict.
