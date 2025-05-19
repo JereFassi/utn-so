@@ -1,3 +1,5 @@
+> 🇪🇸 [Leer en español](README.es.md)
+
 ## Mutex Example Explanation
 
 This example demonstrates thread synchronization using mutexes in C:
@@ -5,13 +7,16 @@ This example demonstrates thread synchronization using mutexes in C:
 ### Key Components
 
 1. **Mutex and Shared Resource Declaration**
+
    ```c
    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
    int shared_counter = 0;
    ```
+
    Creates a mutex for thread synchronization and a shared counter variable.
 
 2. **Thread Function**
+
    ```c
    void *thread_function(void *arg) {
        pthread_mutex_lock(&mutex);
@@ -20,7 +25,9 @@ This example demonstrates thread synchronization using mutexes in C:
        pthread_mutex_unlock(&mutex);
    }
    ```
+
    Shows critical section protection using:
+
    - `pthread_mutex_lock()`: Lock the mutex before accessing shared resource
    - `pthread_mutex_unlock()`: Release the mutex after modification
 
@@ -35,6 +42,7 @@ This example demonstrates thread synchronization using mutexes in C:
    Creates and manages multiple threads using pthread library.
 
 ### Compilation and Execution
+
 ```bash
 # Compile the example (note the -pthread flag)
 gcc src/03-threads/mutex_example.c -o mutex_example -pthread
@@ -44,6 +52,7 @@ gcc src/03-threads/mutex_example.c -o mutex_example -pthread
 ```
 
 ### Expected Output
+
 ```
 Thread 1: counter = 1
 Thread 3: counter = 2
