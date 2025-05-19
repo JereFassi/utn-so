@@ -1,3 +1,5 @@
+> 🇪🇸 [Leer en español](README.es.md)
+
 # 🧩 Peterson's Algorithm Example
 
 This folder contains a C implementation of **Peterson's algorithm**, a classic software-only solution for achieving mutual exclusion between two concurrent threads or processes.
