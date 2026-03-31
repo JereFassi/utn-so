@@ -1,21 +1,21 @@
 > 🇪🇸 [Leer en español](README.es.md)
 
-## Mutex Example Explanation
+## Explicacion del Ejemplo de Mutex
 
-This example demonstrates thread synchronization using mutexes in C:
+Este ejemplo demuestra la sincronizacion de hilos usando mutexes en C:
 
-### Key Components
+### Componentes Clave
 
-1. **Mutex and Shared Resource Declaration**
+1. **Declaracion del Mutex y Recurso Compartido**
 
    ```c
    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
    int shared_counter = 0;
    ```
 
-   Creates a mutex for thread synchronization and a shared counter variable.
+   Crea un mutex para la sincronizacion de hilos y una variable contador compartida.
 
-2. **Thread Function**
+2. **Funcion del Hilo**
 
    ```c
    void *thread_function(void *arg) {
@@ -26,12 +26,12 @@ This example demonstrates thread synchronization using mutexes in C:
    }
    ```
 
-   Shows critical section protection using:
+   Muestra la proteccion de la seccion critica usando:
 
-   - `pthread_mutex_lock()`: Lock the mutex before accessing shared resource
-   - `pthread_mutex_unlock()`: Release the mutex after modification
+   - `pthread_mutex_lock()`: Bloquea el mutex antes de acceder al recurso compartido
+   - `pthread_mutex_unlock()`: Libera el mutex despues de la modificacion
 
-3. **Thread Creation and Management**
+3. **Creacion y Gestion de Hilos**
    ```c
    pthread_t threads[NUM_THREADS];
    for (int i = 0; i < NUM_THREADS; i++) {
@@ -39,19 +39,19 @@ This example demonstrates thread synchronization using mutexes in C:
        pthread_create(&threads[i], NULL, thread_function, &thread_ids[i]);
    }
    ```
-   Creates and manages multiple threads using pthread library.
+   Crea y gestiona multiples hilos usando la biblioteca pthread.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
 ```bash
-# Compile the example (note the -pthread flag)
+# Compilar el ejemplo (nota la opcion -pthread)
 gcc src/03-threads/mutex_example.c -o mutex_example -pthread
 
-# Run the program
+# Ejecutar el programa
 ./mutex_example
 ```
 
-### Expected Output
+### Salida Esperada
 
 ```
 Thread 1: counter = 1
@@ -62,4 +62,4 @@ Thread 1: counter = 5
 ...
 ```
 
-Note: The order of thread execution may vary due to random sleep intervals.
+Nota: El orden de ejecucion de los hilos puede variar debido a intervalos de espera aleatorios.

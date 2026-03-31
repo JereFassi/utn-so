@@ -1,62 +1,62 @@
-## Windows Process Creation Example
+## Ejemplo de Creacion de Procesos en Windows
 
-### Windows Setup Instructions
+### Instrucciones de Configuracion en Windows
 
-1. **Install GCC Compiler**
+1. **Instalar el Compilador GCC**
 
-   - Install MSYS2: https://www.msys2.org/
-   - Follow MinGW-w64 setup: https://www.mingw-w64.org/getting-started/msys2/
-   - Or follow VS Code's guide: https://code.visualstudio.com/docs/cpp/config-mingw
+   - Instala MSYS2: https://www.msys2.org/
+   - Sigue la configuracion de MinGW-w64: https://www.mingw-w64.org/getting-started/msys2/
+   - O sigue la guia de VS Code: https://code.visualstudio.com/docs/cpp/config-mingw
 
-2. **Setup Environment**
+2. **Configurar el Entorno**
 
    ```powershell
-   # Add MinGW to PATH if not done during installation
-   # Usually located at: C:\msys64\mingw64\bin
+   # Agrega MinGW al PATH si no lo hiciste durante la instalacion
+   # Suele estar ubicado en: C:\msys64\mingw64\bin
    ```
 
-3. **Paint Installation Path - Windows 10**
+3. **Ruta de Instalacion de Paint - Windows 10**
    ```
    "C:\\Windows\\system32\\mspaint.exe"
    ```
-4. **Find Paint Installation Path - Windows 11**
+4. **Buscar la Ruta de Instalacion de Paint - Windows 11**
 
    ```powershell
-   # Run in PowerShell as administrator
+   # Ejecutar en PowerShell como administrador
    Get-AppxPackage -allusers Microsoft.Paint | Select-Object -Property Name, InstallLocation
    ```
 
-   Example output:
+   Salida de ejemplo:
 
    ```
    Name              : Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe
    InstallLocation   : C:\Program Files\WindowsApps\Microsoft.Paint_11.2502.161.0_x64__8wekyb3d8bbwe
    ```
 
-5. **Update Source Code**
+5. **Actualizar el Codigo Fuente**
 
-   - Replace the Paint path in your code with the InstallLocation from above
-   - Add `\PaintApp\mspaint.exe` to the path
+   - Reemplaza la ruta de Paint en tu codigo con el `InstallLocation` obtenido arriba
+   - Agrega `\PaintApp\mspaint.exe` al final de la ruta
 
-6. **Compile and Run**
+6. **Compilar y Ejecutar**
 
    ```bash
-   # Compile
+   # Compilar
    gcc create_process_example.c -o create_process_example.exe
 
-   # Run
+   # Ejecutar
    ./create_process_example.exe
    ```
 
-Note: The Paint installation path may vary depending on your Windows version and installation.
+Nota: La ruta de instalacion de Paint puede variar segun la version de Windows y el tipo de instalacion.
 
-## Process Creation Example
+## Ejemplo de Creacion de Procesos
 
-This example demonstrates how to create child processes in Windows using the Windows API:
+Este ejemplo demuestra como crear procesos hijo en Windows usando la API de Windows:
 
-### Key Components
+### Componentes Clave
 
-1. **Process Information Structures**
+1. **Estructuras de Informacion del Proceso**
 
    ```c
    STARTUPINFO si;
@@ -65,71 +65,71 @@ This example demonstrates how to create child processes in Windows using the Win
    si.cb = sizeof(si);
    ```
 
-   Initialize required structures:
+   Inicializa las estructuras requeridas:
 
-   - `STARTUPINFO`: Contains window settings for new process
-   - `PROCESS_INFORMATION`: Receives identification information
-   - `ZeroMemory`: Clears memory to avoid undefined behavior
+   - `STARTUPINFO`: Contiene configuraciones de ventana para el nuevo proceso
+   - `PROCESS_INFORMATION`: Recibe informacion de identificacion
+   - `ZeroMemory`: Limpia memoria para evitar comportamiento indefinido
 
-2. **Process Creation**
+2. **Creacion del Proceso**
 
    ```c
    CreateProcess(
-     NULL,    // No module name (use command line)
-     "path/to/mspaint.exe",  // Command line
-     NULL,    // Process handle not inheritable
-     NULL,    // Thread handle not inheritable
-     FALSE,   // Set handle inheritance to FALSE
-     0,       // No creation flags
-     NULL,    // Use parent's environment block
-     NULL,    // Use parent's starting directory
-     &si,     // Pointer to STARTUPINFO structure
-     &pi      // Pointer to PROCESS_INFORMATION structure
+       NULL,    // Sin nombre de modulo (usar linea de comandos)
+       "path/to/mspaint.exe",  // Linea de comandos
+       NULL,    // Handle de proceso no heredable
+       NULL,    // Handle de hilo no heredable
+       FALSE,   // Establecer herencia de handles en FALSE
+       0,       // Sin banderas de creacion
+       NULL,    // Usar bloque de entorno del padre
+       NULL,    // Usar directorio inicial del padre
+       &si,     // Puntero a la estructura STARTUPINFO
+       &pi      // Puntero a la estructura PROCESS_INFORMATION
    );
    ```
 
-   Creates a new process and its primary thread.
+   Crea un nuevo proceso y su hilo principal.
 
-3. **Process Synchronization**
+3. **Sincronizacion de Procesos**
    ```c
    WaitForSingleObject(pi.hProcess, INFINITE);
    printf("Child Complete");
    ```
-   Parent process waits for child to complete.
+   El proceso padre espera a que el hijo termine.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
 ```bash
-# Compile the basic example
+# Compilar el ejemplo basico
 gcc create_process_example.c -o create_process_example.exe
 
-# Run the program
+# Ejecutar el programa
 ./create_process_example.exe
 ```
 
-### Extended Version with Arguments
+### Version Extendida con Argumentos
 
-The second version (`create_process2_example.c`) adds:
+La segunda version (`create_process2_example.c`) agrega:
 
-- Command line argument support
-- Default image path handling
-- Better error messages
+- Soporte de argumentos por linea de comandos
+- Manejo de ruta de imagen por defecto
+- Mejores mensajes de error
 
 ```bash
-# Compile the extended example
+# Compilar el ejemplo extendido
 gcc create_process2_example.c -o create_process2_example.exe
 
-# Run with default image
+# Ejecutar con imagen por defecto
 ./create_process2_example.exe default
 
-# Run with specific image
+# Ejecutar con una imagen especifica
 ./create_process2_example.exe "C:\path\to\image.jpg"
 ```
 
-### Notes
+### Notas
 
-- Requires Windows OS
-- Uses Windows API (`windows.h`)
-- Microsoft Paint must be installed
-- Remember to clean up handles after use
-- Check process permissions if Paint fails to open
+- Requiere sistema operativo Windows
+- Usa la API de Windows (`windows.h`)
+- Microsoft Paint debe estar instalado
+- Recuerda liberar los handles despues de usarlos
+- Verifica permisos del proceso si Paint no abre

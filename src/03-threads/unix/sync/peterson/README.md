@@ -1,40 +1,40 @@
 > 🇪🇸 [Leer en español](README.es.md)
 
-# 🧩 Peterson's Algorithm Example
+# 🧩 Ejemplo del Algoritmo de Peterson
 
-This folder contains a C implementation of **Peterson's algorithm**, a classic software-only solution for achieving mutual exclusion between two concurrent threads or processes.
-
----
-
-## 📄 Files
-
-- `petersons_solution_i.c` – Code for process/thread **i**.
-- `petersons_solution_j.c` – Code for process/thread **j**.
+Esta carpeta contiene una implementacion en C del **algoritmo de Peterson**, una solucion clasica basada solo en software para lograr exclusion mutua entre dos hilos o procesos concurrentes.
 
 ---
 
-## 📝 What is Peterson's Algorithm?
+## 📄 Archivos
 
-Peterson's algorithm is a synchronization technique that allows two processes to share a single-use resource without conflicts, using only shared memory for communication. It guarantees:
-
-- **Mutual exclusion:** Only one process can enter the critical section at a time.
-- **Progress:** If no process is in the critical section, one of the waiting processes can enter.
-- **Bounded waiting:** Each process will eventually get its turn.
-
-It does **not** require special hardware instructions—just shared variables.
+- `petersons_solution_i.c` - Codigo para el proceso/hilo **i**.
+- `petersons_solution_j.c` - Codigo para el proceso/hilo **j**.
 
 ---
 
-## 🛠️ How to Use
+## 📝 Que es el Algoritmo de Peterson?
 
-1. **Compile** either file (they are structurally similar, just with roles reversed):
+El algoritmo de Peterson es una tecnica de sincronizacion que permite que dos procesos compartan un recurso de uso exclusivo sin conflictos, utilizando solo memoria compartida para la comunicacion. Garantiza:
+
+- **Exclusion mutua:** Solo un proceso puede entrar a la seccion critica a la vez.
+- **Progreso:** Si ningun proceso esta en la seccion critica, uno de los procesos en espera podra entrar.
+- **Espera acotada:** Cada proceso eventualmente tendra su turno.
+
+No requiere instrucciones especiales de hardware, solo variables compartidas.
+
+---
+
+## 🛠️ Como Usar
+
+1. **Compila** cualquiera de los archivos (son estructuralmente similares, solo cambia el rol):
 
    ```bash
    gcc petersons_solution_i.c -o peterson_i
    gcc petersons_solution_j.c -o peterson_j
    ```
 
-2. **Run** the compiled program(s):
+2. **Ejecuta** el/los programa(s) compilado(s):
 
    ```bash
    ./peterson_i
@@ -42,18 +42,18 @@ It does **not** require special hardware instructions—just shared variables.
    ./peterson_j
    ```
 
-> **Note:** These files are designed for educational purposes and illustrate the algorithm's logic. To see the mutual exclusion in action, you would typically integrate both roles into a single program and run them as separate threads or processes, sharing the `flag` and `turn` variables.
+> **Nota:** Estos archivos estan disenados con fines educativos y muestran la logica del algoritmo. Para ver la exclusion mutua en accion, normalmente se integran ambos roles en un solo programa y se ejecutan como hilos o procesos separados, compartiendo las variables `flag` y `turn`.
 
 ---
 
-## 📚 References
+## 📚 Referencias
 
-- [Peterson's Algorithm – Wikipedia](https://en.wikipedia.org/wiki/Peterson%27s_algorithm)
-- Operating Systems textbooks (e.g., Silberschatz, Galvin, Gagne)
+- [Algoritmo de Peterson - Wikipedia](https://es.wikipedia.org/wiki/Algoritmo_de_Peterson)
+- Libros de Sistemas Operativos (por ejemplo, Silberschatz, Galvin, Gagne)
 
 ---
 
-## 💡 Example Structure
+## 💡 Estructura de Ejemplo
 
 ```c
 volatile bool flag[2] = {false, false};
@@ -65,15 +65,15 @@ void process(int i) {
     flag[i] = true;
     turn = j;
     while (flag[j] && turn == j) {
-      // Busy wait
+      // Espera ocupada
     }
-    // Critical section
+    // Seccion critica
     flag[i] = false;
-    // Remainder section
+    // Seccion restante
   }
 }
 ```
 
 ---
 
-Happy learning!
+Feliz aprendizaje!

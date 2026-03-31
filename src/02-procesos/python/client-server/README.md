@@ -1,109 +1,109 @@
-# Python Socket Communication Examples
+# Ejemplos de Comunicacion con Sockets en Python
 
-This project demonstrates client-server communication using Python's socket programming. It includes both basic and improved implementations showing how to establish TCP connections and exchange messages between clients and servers.
+Este proyecto demuestra comunicacion cliente-servidor usando programacion de sockets en Python. Incluye implementaciones basicas y mejoradas para mostrar como establecer conexiones TCP e intercambiar mensajes entre clientes y servidores.
 
-## Project Structure
+## Estructura del Proyecto
 
-### Basic Implementation
+### Implementacion Basica
 
-- **`server.py`**: Basic TCP server that:
+- **`server.py`**: Servidor TCP basico que:
 
-  - Listens on localhost (127.0.0.1:65432)
-  - Accepts one client connection
-  - Receives a single message
-  - Responds with an acknowledgment
-  - Closes the connection
+  - Escucha en localhost (127.0.0.1:65432)
+  - Acepta una conexion de cliente
+  - Recibe un unico mensaje
+  - Responde con un acuse de recibo
+  - Cierra la conexion
 
-- **`client.py`**: Basic TCP client that:
-  - Connects to the server
-  - Sends a predefined message
-  - Receives and displays the server's response
-  - Closes the connection
+- **`client.py`**: Cliente TCP basico que:
+  - Se conecta al servidor
+  - Envia un mensaje predefinido
+  - Recibe y muestra la respuesta del servidor
+  - Cierra la conexion
 
-### Improved Implementation (v2)
+### Implementacion Mejorada (v2)
 
-- **`server.v2.py`**: Enhanced server with:
+- **`server.v2.py`**: Servidor mejorado con:
 
-  - Socket address reuse (`SO_REUSEADDR`)
-  - Continuous message handling
-  - Graceful connection termination on 'bye'
-  - Better error handling and logging
+  - Reutilizacion de direccion de socket (`SO_REUSEADDR`)
+  - Manejo continuo de mensajes
+  - Finalizacion de conexion ordenada con 'bye'
+  - Mejor manejo de errores y logging
 
-- **`client.v2.py`**: Interactive client featuring:
-  - User input for messages
-  - Continuous communication
-  - Multiple exit commands ('quit', 'exit', 'bye')
-  - Improved error handling
-  - Signal handling (Ctrl+C, Ctrl+D)
+- **`client.v2.py`**: Cliente interactivo con:
+  - Entrada de mensajes por usuario
+  - Comunicacion continua
+  - Multiples comandos de salida ('quit', 'exit', 'bye')
+  - Mejor manejo de errores
+  - Manejo de seniales (Ctrl+C, Ctrl+D)
 
-## Requirements
+## Requisitos
 
-- Python 3.6 or higher
-- No external dependencies required (uses standard library only)
+- Python 3.6 o superior
+- No requiere dependencias externas (usa solo la biblioteca estandar)
 
-## Running the Examples
+## Ejecucion de los Ejemplos
 
-### Basic Version
+### Version Basica
 
-1. Start the server:
+1. Inicia el servidor:
 
    ```bash
    python server.py
    ```
 
-2. In a new terminal, run the client:
+2. En una terminal nueva, ejecuta el cliente:
    ```bash
    python client.py
    ```
 
-### Improved Version (v2)
+### Version Mejorada (v2)
 
-1. Start the improved server:
+1. Inicia el servidor mejorado:
 
    ```bash
    python server.v2.py
    ```
 
-2. In a new terminal, start the interactive client:
+2. En una terminal nueva, inicia el cliente interactivo:
 
    ```bash
    python client.v2.py
    ```
 
-3. **Interactive Commands:**
-   - Type any message and press Enter to send
-   - Use these commands to exit:
-     - `bye` - graceful shutdown (notifies server)
-     - `quit` or `exit` - local client shutdown
-     - `Ctrl+C` - force quit
-   - `Ctrl+D` - close input stream (Unix-like systems)
+3. **Comandos Interactivos:**
+   - Escribe cualquier mensaje y presiona Enter para enviarlo
+   - Usa estos comandos para salir:
+     - `bye` - cierre ordenado (notifica al servidor)
+     - `quit` o `exit` - cierre local del cliente
+     - `Ctrl+C` - salida forzada
+   - `Ctrl+D` - cerrar flujo de entrada (sistemas tipo Unix)
 
-## Communication Protocol
+## Protocolo de Comunicacion
 
-- **Connection**: TCP on localhost (127.0.0.1:65432)
-- **Message Format**: UTF-8 encoded strings
-- **Buffer Size**: 1024 bytes
-- **Termination Signal**: 'bye' message or connection close
+- **Conexion**: TCP en localhost (127.0.0.1:65432)
+- **Formato de Mensajes**: cadenas codificadas en UTF-8
+- **Tamano de Buffer**: 1024 bytes
+- **Senal de Finalizacion**: mensaje 'bye' o cierre de conexion
 
-## Error Handling
+## Manejo de Errores
 
-- Connection refused
-- Unexpected disconnections
-- Input/Output errors
-- Keyboard interrupts
-- EOF conditions
+- Conexion rechazada
+- Desconexiones inesperadas
+- Errores de entrada/salida
+- Interrupciones de teclado
+- Condiciones EOF
 
-## Notes
+## Notas
 
-- The v2 implementation is recommended for learning and testing
-- Both server versions handle one client at a time
-- The server automatically frees the socket address for quick restart
-- Messages are echoed back with "Server received: " prefix
+- Se recomienda la implementacion v2 para aprendizaje y pruebas
+- Ambas versiones de servidor atienden un cliente a la vez
+- El servidor libera automaticamente la direccion del socket para reinicios rapidos
+- Los mensajes se devuelven con el prefijo "Server received: "
 
-## Future Improvements
+## Mejoras Futuras
 
-- Multi-client support using threading
-- Custom message protocols
-- Data encryption
-- Connection timeout handling
-- Message size validation
+- Soporte para multiples clientes usando threads
+- Protocolos de mensajes personalizados
+- Cifrado de datos
+- Manejo de timeout de conexion
+- Validacion del tamano de mensajes

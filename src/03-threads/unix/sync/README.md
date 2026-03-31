@@ -1,12 +1,12 @@
 > 🇪🇸 [Leer en español](README.es.md)
 
-# 🔗 Thread Synchronization Examples (C)
+# 🔗 Ejemplos de Sincronizacion de Hilos (C)
 
-This folder contains classic thread synchronization examples in C, demonstrating the use of mutexes, condition variables, and algorithms for mutual exclusion. Each subfolder includes source code and a README with explanations.
+Esta carpeta contiene ejemplos clasicos de sincronizacion de hilos en C, demostrando el uso de mutexes, variables de condicion y algoritmos de exclusion mutua. Cada subcarpeta incluye codigo fuente y un README con explicaciones.
 
 ---
 
-## 📁 Folder Structure
+## 📁 Estructura de Carpetas
 
 ```
 sync/
@@ -25,62 +25,62 @@ sync/
 
 ---
 
-## 📚 Examples Overview
+## 📚 Resumen de Ejemplos
 
-### 1. `mutex/` – Mutex Example
+### 1. `mutex/` - Ejemplo de Mutex
 
-- **Purpose:** Demonstrates basic thread synchronization using a `pthread_mutex_t`.
-- **What it shows:** How to protect a shared resource (like a counter) so only one thread can modify it at a time.
-- **How to run:**
+- **Proposito:** Demuestra la sincronizacion basica de hilos usando un `pthread_mutex_t`.
+- **Que muestra:** Como proteger un recurso compartido (como un contador) para que solo un hilo pueda modificarlo a la vez.
+- **Como ejecutar:**
   ```bash
   gcc mutex_example.c -o mutex_example -pthread
   ./mutex_example
   ```
-- **See:** [`mutex/README.md`](mutex/README.md) for details and expected output.
+- **Ver:** [`mutex/README.md`](mutex/README.md) para detalles y salida esperada.
 
 ---
 
-### 2. `peterson/` – Peterson's Algorithm
+### 2. `peterson/` - Algoritmo de Peterson
 
-- **Purpose:** Shows a software-only solution for mutual exclusion between two threads (no hardware primitives).
-- **Files:**
+- **Proposito:** Muestra una solucion solo de software para exclusion mutua entre dos hilos (sin primitivas de hardware).
+- **Archivos:**
   - `petersons_solution_i.c` – Thread i's code.
   - `petersons_solution_j.c` – Thread j's code.
-- **How to run:** Compile and run each file separately.
-- **See:** [`peterson/README.md`](peterson/README.md) for explanation and usage.
+- **Como ejecutar:** Compila y ejecuta cada archivo por separado.
+- **Ver:** [`peterson/README.md`](peterson/README.md) para explicacion y uso.
 
 ---
 
-### 3. `producer-consumer/` – Producer-Consumer Problem
+### 3. `producer-consumer/` - Problema Productor-Consumidor
 
-- **Purpose:** Classic example of synchronizing producer and consumer threads using mutexes and condition variables.
-- **Files:**
+- **Proposito:** Ejemplo clasico de sincronizacion entre hilos productor y consumidor usando mutexes y variables de condicion.
+- **Archivos:**
   - `producer_consumer_example.c` – Basic version.
   - `producer_consumer_example_verbose.c` – With detailed print statements for tracing.
-- **How to run:**
+- **Como ejecutar:**
   ```bash
   gcc producer_consumer_example.c -o producer_consumer_example -lpthread
   ./producer_consumer_example
   ```
-- **See:** [`producer-consumer/README.md`](producer-consumer/README.md) for step-by-step explanation and sample output.
+- **Ver:** [`producer-consumer/README.md`](producer-consumer/README.md) para explicacion paso a paso y salida de ejemplo.
 
 ---
 
-## 📝 Notes
+## 📝 Notas
 
-- All examples use POSIX threads (`pthread`).
-- Make sure to compile with the `-pthread` or `-lpthread` flag.
-- Each subfolder contains a README with more details, explanations, and expected outputs.
-
----
-
-## 🚀 Getting Started
-
-1. Choose an example folder.
-2. Read its `README.md` for context.
-3. Compile the `.c` file(s) using GCC and the pthread flag.
-4. Run the resulting executable to observe thread synchronization in action.
+- Todos los ejemplos usan hilos POSIX (`pthread`).
+- Asegurate de compilar con la opcion `-pthread` o `-lpthread`.
+- Cada subcarpeta contiene un README con mas detalles, explicaciones y salidas esperadas.
 
 ---
 
-Happy coding! 🧵
+## 🚀 Primeros Pasos
+
+1. Elige una carpeta de ejemplo.
+2. Lee su `README.md` para contexto.
+3. Compila el/los archivo(s) `.c` usando GCC y la opcion de hilos.
+4. Ejecuta el binario resultante para observar la sincronizacion de hilos en accion.
+
+---
+
+Feliz programacion! 🧵

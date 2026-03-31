@@ -4,17 +4,11 @@ Este directorio contiene los archivos PDF correspondientes a las clases del curs
 
 ## 📂 Contenido
 
-- **Clase 1**: Introducción a los sistemas operativos  
+- **Clase 1**: Introducción a Arquitectura de Computadoras y Estructuras de Datos
   [Clase 1.pdf](Clase%201.pdf)
 
-- **Clase 2**: Conceptos básicos de procesos y memoria  
+- **Clase 2**: Introducción a Sistemas Operativos
   [Clase 2.pdf](Clase%202.pdf)
-
-- **Clase 3**: Procesos  
-  [Clase 3.pdf](Clase%203.pdf)
-
-- **Clase 4**: Hilos y Concurrencia
-  [Clase 4.pdf](Clase%204.pdf)
 
 ## 📝 Descripción
 

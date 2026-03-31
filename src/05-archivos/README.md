@@ -1,63 +1,63 @@
 > 🇪🇸 [Leer en español](README.es.md)
 
-# File Copy Program in C
+# Programa de Copia de Archivos en C
 
-This program demonstrates how to copy the contents of one file to another using system calls in C. It includes error handling for common issues such as file access and read/write errors.
+Este programa demuestra como copiar el contenido de un archivo a otro usando llamadas al sistema en C. Incluye manejo de errores para problemas comunes como acceso a archivos y errores de lectura/escritura.
 
 ---
 
-## 📋 How It Works
+## 📋 Como Funciona
 
-1. **Command-Line Arguments**  
-   The program expects two arguments:
+1. **Argumentos de Linea de Comandos**  
+   El programa espera dos argumentos:
 
-   - `source_file`: The file to be copied.
-   - `destination_file`: The file where the contents will be copied.
+   - `source_file`: El archivo que se desea copiar.
+   - `destination_file`: El archivo donde se copiara el contenido.
 
-   Example usage:
+   Ejemplo de uso:
 
    ```bash
    ./copy_file_example source.txt destination.txt
    ```
 
-2. **Opening Files**
+2. **Apertura de Archivos**
 
-   - The source file is opened in read-only mode using `open()`.
-   - The destination file is created (or overwritten if it exists) using `creat()` with permissions `0700` (read, write, and execute for the owner).
+   - El archivo fuente se abre en modo solo lectura usando `open()`.
+   - El archivo de destino se crea (o se sobrescribe si existe) usando `creat()` con permisos `0700` (lectura, escritura y ejecucion para el propietario).
 
-3. **Copying Data**
+3. **Copia de Datos**
 
-   - A buffer of size `4096` bytes is used to read chunks of data from the source file and write them to the destination file.
-   - The program uses a loop to read and write until the end of the source file is reached.
+   - Se usa un buffer de tamano `4096` bytes para leer bloques del archivo fuente y escribirlos en el archivo destino.
+   - El programa usa un bucle para leer y escribir hasta alcanzar el final del archivo fuente.
 
-4. **Error Handling**
+4. **Manejo de Errores**
 
-   - The program checks for errors at every step:
-     - If the source file cannot be opened, it exits with an error message.
-     - If the destination file cannot be created, it exits with an error message.
-     - If a read or write operation fails, it exits with an error message.
+    - El programa verifica errores en cada paso:
+       - Si no se puede abrir el archivo fuente, termina con un mensaje de error.
+       - Si no se puede crear el archivo destino, termina con un mensaje de error.
+       - Si falla una operacion de lectura o escritura, termina con un mensaje de error.
 
-5. **Closing Files**
+5. **Cierre de Archivos**
 
-   - Both the source and destination files are closed after the copying process is complete.
+   - Tanto el archivo fuente como el destino se cierran al finalizar el proceso de copia.
 
-6. **Success Message**
-   - If the file is copied successfully, a success message is printed.
+6. **Mensaje de Exito**
+   - Si el archivo se copia correctamente, se imprime un mensaje de exito.
 
 ---
 
-## 🛠️ Code Breakdown
+## 🛠️ Desglose del Codigo
 
-### Key Components
+### Componentes Clave
 
-1. **Buffer and Permissions**
+1. **Buffer y Permisos**
 
    ```c
-   #define BUF_SIZE 4096    /* Buffer size for copying */
-   #define OUTPUT_MODE 0700 /* Permissions for the destination file */
+   #define BUF_SIZE 4096    /* Tamano del buffer para la copia */
+   #define OUTPUT_MODE 0700 /* Permisos para el archivo de destino */
    ```
 
-2. **Opening Files**
+2. **Apertura de Archivos**
 
    ```c
    in_fd = open(argv[1], O_RDONLY);
@@ -74,7 +74,7 @@ This program demonstrates how to copy the contents of one file to another using 
    }
    ```
 
-3. **Copy Loop**
+3. **Bucle de Copia**
 
    ```c
    while (1) {
@@ -86,7 +86,7 @@ This program demonstrates how to copy the contents of one file to another using 
            exit(5);
        }
        if (rd_count == 0) {
-           break; /* End of file reached */
+           break; /* Fin de archivo alcanzado */
        }
        wt_count = write(out_fd, buffer, rd_count);
        if (wt_count < 0 || wt_count != rd_count) {
@@ -98,7 +98,7 @@ This program demonstrates how to copy the contents of one file to another using 
    }
    ```
 
-4. **Closing Files**
+4. **Cierre de Archivos**
    ```c
    close(in_fd);
    close(out_fd);
@@ -107,38 +107,38 @@ This program demonstrates how to copy the contents of one file to another using 
 
 ---
 
-## 🚀 How to Compile and Run
+## 🚀 Como Compilar y Ejecutar
 
-1. **Compile the Program**
+1. **Compilar el Programa**
 
    ```bash
    gcc copy_file_example.c -o copy_file_example
    ```
 
-2. **Run the Program**
+2. **Ejecutar el Programa**
    ```bash
    ./copy_file_example source.txt destination.txt
    ```
 
 ---
 
-## 📝 Example Output
+## 📝 Ejemplo de Salida
 
-### Successful Copy
+### Copia Exitosa
 
 ```bash
 $ ./copy_file_example source.txt destination.txt
 File copied successfully.
 ```
 
-### Error: Source File Not Found
+### Error: Archivo Fuente No Encontrado
 
 ```bash
 $ ./copy_file_example nonexistent.txt destination.txt
 Error: cannot open source file 'nonexistent.txt'
 ```
 
-### Error: Cannot Create Destination File
+### Error: No se Puede Crear el Archivo de Destino
 
 ```bash
 $ ./copy_file_example source.txt /protected/destination.txt
@@ -147,8 +147,8 @@ Error: cannot create destination file '/protected/destination.txt'
 
 ---
 
-## 🔍 Notes
+## 🔍 Notas
 
-- The program overwrites the destination file if it already exists.
-- The buffer size (`BUF_SIZE`) can be adjusted for performance optimization.
-- Ensure you have the necessary permissions to read the source file and write to the destination file.
+- El programa sobrescribe el archivo de destino si ya existe.
+- El tamano del buffer (`BUF_SIZE`) se puede ajustar para optimizar rendimiento.
+- Asegurate de tener los permisos necesarios para leer el archivo fuente y escribir en el archivo de destino.

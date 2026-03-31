@@ -1,91 +1,91 @@
-## Read Input Example Explanation
+## Explicacion del Ejemplo de Lectura de Entrada
 
-This example demonstrates basic input/output operations in C:
+Este ejemplo demuestra operaciones basicas de entrada/salida en C:
 
-### Key Components
+### Componentes Clave
 
-1. **Input Buffer Declaration**
+1. **Declaracion del Buffer de Entrada**
    ```c
    char input[100];
    ```
-   Creates a fixed-size buffer to store user input (100 characters maximum).
+   Crea un buffer de tamano fijo para almacenar la entrada del usuario (maximo 100 caracteres).
 
-2. **Reading User Input**
+2. **Lectura de la Entrada del Usuario**
    ```c
    fgets(input, sizeof(input), stdin);
    ```
-   Safely reads a line of text from standard input, preventing buffer overflows.
+   Lee de forma segura una linea de texto desde la entrada estandar, evitando desbordamientos de buffer.
 
-3. **Displaying Output**
+3. **Mostrar la Salida**
    ```c
    printf("You entered: %s", input);
    ```
-   Prints the user's input back to the console.
+   Imprime en consola la entrada ingresada por el usuario.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc src/01-introduccion/read_input_example.c -o read_input_example
 
-# Run the program
+# Ejecutar el programa
 ./read_input_example
 ```
 
 ---
 
-## Read File Example Explanation
+## Explicacion del Ejemplo de Lectura de Archivo
 
-This example demonstrates file handling operations in C using the standard I/O library:
+Este ejemplo demuestra operaciones de manejo de archivos en C usando la biblioteca estandar de E/S:
 
-### Key Components
+### Componentes Clave
 
-1. **Buffer Declaration**
+1. **Declaracion del Buffer**
    ```c
    #define BUFFER_SIZE 1024
    char buffer[BUFFER_SIZE];
    ```
-   Creates a fixed-size buffer to store file contents during reading.
+   Crea un buffer de tamano fijo para almacenar el contenido del archivo durante la lectura.
 
-2. **File Opening**
+2. **Apertura del Archivo**
    ```c
    FILE *file;
    file = fopen("src/01-introduccion/tuc.txt", "r");
    ```
-   Opens the file in read mode and checks for errors:
-   - Returns NULL if file cannot be opened
-   - "r" flag indicates read-only mode
+   Abre el archivo en modo lectura y verifica errores:
+   - Devuelve NULL si no se puede abrir el archivo
+   - La bandera "r" indica modo de solo lectura
 
-3. **File Reading**
+3. **Lectura del Archivo**
    ```c
    while (fgets(buffer, BUFFER_SIZE, file) != NULL) {
        printf("%s", buffer);
    }
    ```
-   Reads the file line by line until EOF is reached:
-   - `fgets`: Reads up to BUFFER_SIZE-1 characters or until newline
-   - Automatically handles line endings
-   - NULL return indicates EOF or error
+   Lee el archivo linea por linea hasta llegar a EOF:
+   - `fgets`: Lee hasta BUFFER_SIZE-1 caracteres o hasta un salto de linea
+   - Maneja automaticamente los finales de linea
+   - El retorno NULL indica EOF o error
 
-4. **File Closing**
+4. **Cierre del Archivo**
    ```c
    if (fclose(file) != 0) {
        perror("Error closing file");
        return 1;
    }
    ```
-   Properly closes the file and handles potential errors.
+   Cierra correctamente el archivo y maneja posibles errores.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc src/01-introduccion/read_file_example.c -o read_file_example
 
-# Run the program
+# Ejecutar el programa
 ./read_file_example
 ```
 
-### Key Differences between fgets and read
-- `fgets` is a buffered C library function, `read` is a system call
-- `fgets` is part of standard C, `read` is POSIX-specific
-- `fgets` works with FILE pointers, `read` uses file descriptors
-- `fgets` reads until newline, `read` reads exact byte count
+### Diferencias Clave entre fgets y read
+- `fgets` es una funcion con buffering de la biblioteca C, `read` es una llamada al sistema
+- `fgets` es parte del estandar C, `read` es especifica de POSIX
+- `fgets` trabaja con punteros FILE, `read` usa descriptores de archivo
+- `fgets` lee hasta salto de linea, `read` lee una cantidad exacta de bytes

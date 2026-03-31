@@ -7,12 +7,8 @@ Este directorio contiene documentación técnica, materiales de clase y explicac
 ```
 docs/
 ├── clases/                         # Materiales y clases
-│   ├── Clase 1.pdf                 # Introducción a Sistemas Operativos
-│   ├── Clase 2.pdf                 # Conceptos Básicos de Procesos y Memoria
-│   ├── Clase 3.pdf                 # Procesos
-│   ├── Clase 4.pdf                 # Hilos y Concurrencia
-│   ├── Clase 5.pdf                 # Planificación de la CPU
-│   ├── Clase 6.pdf                 # Sincronización de Procesos
+│   ├── Clase 1.pdf                 # Introducción a Arquitectura de Computadoras y Estructuras de Datos
+│   ├── Clase 2.pdf                 # Introducción a Sistemas Operativos
 │   └── README.md                   # Guía de materiales de clase
 ├── DataStructures.md               # Guía sobre estructuras de datos
 ├── EstandarPOSIX.md                # Resumen del estándar POSIX
@@ -28,12 +24,8 @@ docs/
 Contiene archivos PDF de materiales de clase y un README que explica cómo usarlos.  
 Ver [clases/README.md](clases/README.md) para más detalles.
 
-- **Clase 1:** Introducción a los sistemas operativos
-- **Clase 2:** Conceptos básicos de procesos y memoria
-- **Clase 3:** Procesos
-- **Clase 4:** Hilos y concurrencia
-- **Clase 5:** Planificación de la CPU
-- **Clase 6:** Sincronización de Procesos
+- **Clase 1:** Introducción a Arquitectura de Computadoras y Estructuras de Datos
+- **Clase 2:** Introducción a Sistemas Operativos
 
 ### Documentación Técnica
 

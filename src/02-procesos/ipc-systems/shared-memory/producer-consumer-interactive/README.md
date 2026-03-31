@@ -1,21 +1,21 @@
-## Producer-Consumer Example Explanation
+## Explicacion del Ejemplo Productor-Consumidor
 
-This example demonstrates inter-process communication using shared memory in both Windows and UNIX systems:
+Este ejemplo demuestra comunicacion entre procesos usando memoria compartida tanto en Windows como en sistemas UNIX:
 
-### Key Components
+### Componentes Clave
 
-1. **Shared Memory Structure**
+1. **Estructura de Memoria Compartida**
    ```c
    typedef struct {
      int count;          // Number of items in buffer
      char buffer[BUFFER_SIZE];  // Shared buffer
    } shared_memory_t;
    ```
-   Defines the structure shared between processes:
-   - `count`: Controls synchronization
-   - `buffer`: Stores the shared data
+   Define la estructura compartida entre procesos:
+   - `count`: Controla la sincronizacion
+   - `buffer`: Almacena los datos compartidos
 
-2. **Windows Implementation**
+2. **Implementacion en Windows**
    ```c
    // Create shared memory
    hMapFile = CreateFileMapping(
@@ -26,12 +26,12 @@ This example demonstrates inter-process communication using shared memory in bot
      sizeof(shared_memory_t), // Size of shared memory
      SHARED_MEM_NAME);       // Name of mapping object
    ```
-   Uses Windows API for shared memory:
-   - `CreateFileMapping`: Creates shared memory segment
-   - `MapViewOfFile`: Maps memory into process space
-   - `UnmapViewOfFile`: Releases mapped memory
+   Usa la API de Windows para memoria compartida:
+   - `CreateFileMapping`: Crea el segmento de memoria compartida
+   - `MapViewOfFile`: Mapea la memoria en el espacio del proceso
+   - `UnmapViewOfFile`: Libera la memoria mapeada
 
-3. **UNIX Implementation**
+3. **Implementacion en UNIX**
    ```c
    // Create shared memory
    shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
@@ -40,49 +40,49 @@ This example demonstrates inter-process communication using shared memory in bot
                     PROT_READ | PROT_WRITE, MAP_SHARED, 
                     shm_fd, 0);
    ```
-   Uses POSIX shared memory:
-   - `shm_open`: Creates shared memory object
-   - `mmap`: Maps memory into process space
-   - `munmap`: Unmaps shared memory
+   Usa memoria compartida POSIX:
+   - `shm_open`: Crea un objeto de memoria compartida
+   - `mmap`: Mapea la memoria en el espacio del proceso
+   - `munmap`: Desmapea la memoria compartida
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
-For Windows:
+Para Windows:
 ```bash
-# Compile producer and consumer
+# Compilar productor y consumidor
 gcc windows-producer.c -o windows-producer.exe
 gcc windows-consumer.c -o windows-consumer.exe
 
-# Run in separate Command Prompt windows
+# Ejecutar en ventanas separadas de Command Prompt
 ./windows-consumer.exe
 ./windows-producer.exe
 ```
 
-For UNIX:
+Para UNIX:
 ```bash
-# Compile producer and consumer
+# Compilar productor y consumidor
 gcc unix-producer.c -o unix-producer -lrt
 gcc unix-consumer.c -o unix-consumer -lrt
 
-# Run in separate terminal windows
+# Ejecutar en terminales separadas
 ./unix-consumer
 ./unix-producer
 ```
 
-### Example Usage
+### Ejemplo de Uso
 ```
-# In consumer window:
+# En la ventana del consumidor:
 Consumer ready. Waiting for messages...
 
-# In producer window:
+# En la ventana del productor:
 Producer ready. Enter messages (Ctrl+Z/D to exit):
 Hello World!
 Produced: Hello World!
 ```
 
-### Notes
-- Windows version uses Windows API (`CreateFileMapping`, `MapViewOfFile`)
-- UNIX version uses POSIX shared memory (`shm_open`, `mmap`)
-- Producer writes messages to shared buffer
-- Consumer continuously checks for and displays new messages
-- Basic synchronization using count variable
+### Notas
+- La version Windows usa API de Windows (`CreateFileMapping`, `MapViewOfFile`)
+- La version UNIX usa memoria compartida POSIX (`shm_open`, `mmap`)
+- El productor escribe mensajes en el buffer compartido
+- El consumidor verifica continuamente y muestra mensajes nuevos
+- Sincronizacion basica usando la variable `count`

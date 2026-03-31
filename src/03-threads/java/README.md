@@ -1,54 +1,54 @@
-# Java Setup for Thread Examples
+# Configuracion de Java para Ejemplos de Threads
 
-This directory contains Java examples related to thread creation and management.
+Este directorio contiene ejemplos en Java relacionados con la creacion y gestion de hilos.
 
-## How to Install Java on Ubuntu
+## Como Instalar Java en Ubuntu
 
-To compile and run Java programs, you need to have the Java Development Kit (JDK) installed. On Ubuntu, you can easily install OpenJDK using the following command:
+Para compilar y ejecutar programas Java, necesitas tener instalado el Java Development Kit (JDK). En Ubuntu, puedes instalar OpenJDK facilmente con el siguiente comando:
 
 ```bash
 sudo apt install openjdk-21-jdk
 ```
 
-This command installs OpenJDK version 21, which includes both the Java Runtime Environment (JRE) and the Java compiler (`javac`).
+Este comando instala OpenJDK version 21, que incluye tanto el Java Runtime Environment (JRE) como el compilador de Java (`javac`).
 
-### Verify Installation
+### Verificar la Instalacion
 
-After installation, you can verify that Java is correctly installed by running:
+Despues de la instalacion, puedes verificar que Java quedo correctamente instalado ejecutando:
 
 ```bash
 java -version
 javac -version
 ```
 
-Both commands should display version information for Java 21.
+Ambos comandos deberian mostrar informacion de version de Java 21.
 
 ---
 
-## How to Compile and Run `Driver.java`
+## Como Compilar y Ejecutar `Driver.java`
 
-1. **Navigate to the directory:**
+1. **Navega al directorio:**
 
    ```bash
    cd src/03-threads/java
    ```
 
-2. **Compile the Java file:**
+2. **Compila el archivo Java:**
 
    ```bash
    javac Driver.java
    ```
 
-   This will generate `Driver.class` and possibly `Summation.class`.
+   Esto generara `Driver.class` y posiblemente `Summation.class`.
 
-3. **Run the program:**
+3. **Ejecuta el programa:**
 
    ```bash
    java Driver 10
    ```
 
-   Replace `10` with any integer to calculate the sum from 1 to that number.
+   Reemplaza `10` por cualquier entero para calcular la suma de 1 hasta ese numero.
 
 ---
 
-Continue with the examples in this folder to learn about Java threads!
+Continua con los ejemplos de esta carpeta para aprender sobre threads en Java.

@@ -1,104 +1,104 @@
-## Memory Layout Example Explanation
+## Explicacion del Ejemplo de Layout de Memoria
 
-This example demonstrates the memory layout of a C program, showing how variables are stored in different memory segments.
+Este ejemplo demuestra el layout de memoria de un programa en C, mostrando como se almacenan las variables en diferentes segmentos de memoria.
 
-### Key Components
+### Componentes Clave
 
-1. **Global Variables**
+1. **Variables Globales**
 
    ```c
    int x;
    int y = 15;
    ```
 
-   - `x` is an uninitialized global variable (stored in the BSS segment).
-   - `y` is an initialized global variable (stored in the Data segment).
+   - `x` es una variable global no inicializada (se almacena en el segmento BSS).
+   - `y` es una variable global inicializada (se almacena en el segmento Data).
 
-2. **Dynamic Memory Allocation**
+2. **Asignacion Dinamica de Memoria**
 
    ```c
    int *values;
    values = (int *)malloc(sizeof(int) * 5);
    ```
 
-   - Allocates memory for an array of 5 integers on the Heap.
+   - Asigna memoria para un arreglo de 5 enteros en el Heap.
 
-3. **Stack Variables**
+3. **Variables de Stack**
    ```c
    int i;
    for (i = 0; i < 5; i++)
      values[i] = i;
    ```
-   - `i` is a local variable (stored on the Stack).
-   - The loop initializes the dynamically allocated array.
+   - `i` es una variable local (se almacena en el Stack).
+   - El bucle inicializa el arreglo asignado dinamicamente.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc src/02-procesos/unix/memory_layout_example.c -o memory_layout_example
 
-# Run the program
+# Ejecutar el programa
 ./memory_layout_example
 ```
 
-### Explanation
+### Explicacion
 
-- **BSS Segment:** Stores uninitialized global/static variables (`x`).
-- **Data Segment:** Stores initialized global/static variables (`y`).
-- **Heap:** Stores dynamically allocated memory (`values` array).
-- **Stack:** Stores local variables and function call information (`i`, function parameters).
+- **Segmento BSS:** Almacena variables globales/estaticas no inicializadas (`x`).
+- **Segmento Data:** Almacena variables globales/estaticas inicializadas (`y`).
+- **Heap:** Almacena memoria asignada dinamicamente (arreglo `values`).
+- **Stack:** Almacena variables locales e informacion de llamadas a funciones (`i`, parametros de funcion).
 
-This example helps visualize how a C program's memory is organized at runtime.
+Este ejemplo ayuda a visualizar como se organiza la memoria de un programa en C en tiempo de ejecucion.
 
 ---
 
-## Fork Example Explanation
+## Explicacion del Ejemplo de Fork
 
-This example demonstrates process creation and management using fork() in C:
+Este ejemplo demuestra creacion y gestion de procesos usando fork() en C:
 
-### Key Components
+### Componentes Clave
 
-1. **Process Creation**
+1. **Creacion de Procesos**
 
    ```c
    pid_t pid = fork();
    ```
 
-   Creates a new child process that is an exact copy of the parent process.
+   Crea un nuevo proceso hijo que es una copia exacta del proceso padre.
 
-2. **Process Identification**
+2. **Identificacion de Procesos**
 
    ```c
    printf("Child process %d (PID: %d, Parent PID: %d) starting...\n",
           i + 1, getpid(), getppid());
    ```
 
-   Shows how to identify processes using:
+   Muestra como identificar procesos usando:
 
-   - `getpid()`: Get current process ID
-   - `getppid()`: Get parent process ID
+   - `getpid()`: Obtener el ID del proceso actual
+   - `getppid()`: Obtener el ID del proceso padre
 
-3. **Process Synchronization**
+3. **Sincronizacion de Procesos**
    ```c
    while ((pid = wait(&status)) > 0) {
        printf("Child process (PID: %d) finished with status %d\n",
               pid, WEXITSTATUS(status));
    }
    ```
-   Parent process waits for all child processes to complete using `wait()`.
+   El proceso padre espera a que todos los procesos hijo terminen usando `wait()`.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc src/02-procesos/fork_example.c -o fork_example
 
-# Run the program
+# Ejecutar el programa
 ./fork_example
 ```
 
-### Expected Output
+### Salida Esperada
 
 ```
 Parent process (PID: xxxx) starting...
@@ -110,59 +110,59 @@ Child process (PID: zzzz) finished with status 0
 Child process (PID: wwww) finished with status 0
 ```
 
-Note: The actual PIDs will be different on each run.
+Nota: Los PID reales seran diferentes en cada ejecucion.
 
 ---
 
-## Fork & Exec Example Explanation
+## Explicacion del Ejemplo de Fork y Exec
 
-This example demonstrates process creation and command execution using fork() and exec() in C:
+Este ejemplo demuestra creacion de procesos y ejecucion de comandos usando fork() y exec() en C:
 
-### Key Components
+### Componentes Clave
 
-1. **Process Creation**
+1. **Creacion de Procesos**
 
    ```c
    pid_t pid = fork();
    ```
 
-   Creates a new child process that is an exact copy of the parent process.
+   Crea un nuevo proceso hijo que es una copia exacta del proceso padre.
 
-2. **Command Execution**
+2. **Ejecucion de Comandos**
 
    ```c
    execlp("/bin/ls", "ls", NULL);
    ```
 
-   Child process executes the 'ls' command:
+   El proceso hijo ejecuta el comando 'ls':
 
-   - `execlp`: Executes a file using PATH environment variable
-   - First argument: Path to executable
-   - Second argument: Program name
-   - NULL: Ends argument list
+   - `execlp`: Ejecuta un archivo usando la variable de entorno PATH
+   - Primer argumento: Ruta al ejecutable
+   - Segundo argumento: Nombre del programa
+   - NULL: Finaliza la lista de argumentos
 
-3. **Parent Waiting**
+3. **Espera del Padre**
    ```c
    wait(NULL);
    printf("Child Complete \n");
    ```
-   Parent process waits for child to complete before continuing.
+   El proceso padre espera a que el hijo termine antes de continuar.
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc src/02-procesos/fork2_example.c -o fork2_example
 
-# Run the program
+# Ejecutar el programa
 ./fork2_example
 ```
 
-### Expected Output
+### Salida Esperada
 
 ```
-[Directory listing from ls command]
+[Listado del directorio generado por ls]
 Child Complete
 ```
 
-Note: The actual directory listing will depend on your current directory contents.
+Nota: El listado real dependera del contenido de tu directorio actual.

@@ -1,10 +1,10 @@
-## Pipe Communication Example
+## Ejemplo de Comunicacion con Pipe
 
-This example demonstrates inter-process communication using pipes in UNIX systems:
+Este ejemplo demuestra comunicacion entre procesos usando pipes en sistemas UNIX:
 
-### Key Components
+### Componentes Clave
 
-1. **Pipe Creation**
+1. **Creacion del Pipe**
    ```c
    int fd[2];
    if (pipe(fd) == -1) {
@@ -12,17 +12,17 @@ This example demonstrates inter-process communication using pipes in UNIX system
        return 1;
    }
    ```
-   Creates a pipe with two file descriptors:
-   - `fd[0]`: Read end of pipe
-   - `fd[1]`: Write end of pipe
+   Crea un pipe con dos descriptores de archivo:
+   - `fd[0]`: Extremo de lectura del pipe
+   - `fd[1]`: Extremo de escritura del pipe
 
-2. **Process Creation**
+2. **Creacion del Proceso**
    ```c
    pid_t pid = fork();
    ```
-   Creates a child process that inherits pipe file descriptors.
+   Crea un proceso hijo que hereda los descriptores del pipe.
 
-3. **Parent Process (Writer)**
+3. **Proceso Padre (Escritor)**
    ```c
    if (pid > 0) {
        close(fd[READ_END]);
@@ -30,11 +30,11 @@ This example demonstrates inter-process communication using pipes in UNIX system
        close(fd[WRITE_END]);
    }
    ```
-   - Closes unused read end
-   - Writes message to pipe
-   - Closes write end when done
+   - Cierra el extremo de lectura no usado
+   - Escribe un mensaje en el pipe
+   - Cierra el extremo de escritura al finalizar
 
-4. **Child Process (Reader)**
+4. **Proceso Hijo (Lector)**
    ```c
    else {
        close(fd[WRITE_END]);
@@ -43,34 +43,34 @@ This example demonstrates inter-process communication using pipes in UNIX system
        close(fd[READ_END]);
    }
    ```
-   - Closes unused write end
-   - Reads message from pipe
-   - Displays received message
+   - Cierra el extremo de escritura no usado
+   - Lee el mensaje desde el pipe
+   - Muestra el mensaje recibido
 
-### Compilation and Execution
+### Compilacion y Ejecucion
 ```bash
-# Compile the example
+# Compilar el ejemplo
 gcc pipe_example.c -o pipe_example
 
-# Run the program
+# Ejecutar el programa
 ./pipe_example
 ```
 
-### Expected Output
+### Salida Esperada
 ```
 read Greetings!
 ```
 
-### Notes
-- Only works on UNIX-like systems (Linux, macOS)
-- Demonstrates unidirectional communication
-- Parent sleeps to ensure proper synchronization
-- Proper cleanup by closing unused pipe ends
-- Uses system calls: `pipe()`, `fork()`, `read()`, `write()`
+### Notas
+- Solo funciona en sistemas tipo UNIX (Linux, macOS)
+- Demuestra comunicacion unidireccional
+- El padre duerme para asegurar sincronizacion basica
+- Limpieza adecuada cerrando extremos no usados del pipe
+- Usa llamadas al sistema: `pipe()`, `fork()`, `read()`, `write()`
 
-### Important Concepts
-1. Pipes are unidirectional
-2. Data flows from write end to read end
-3. Unused ends should be closed
-4. Pipe provides synchronized communication
-5. Pipe exists only while processes are running
+### Conceptos Importantes
+1. Los pipes son unidireccionales
+2. Los datos fluyen del extremo de escritura al de lectura
+3. Los extremos no usados deben cerrarse
+4. El pipe provee comunicacion sincronizada
+5. El pipe existe solo mientras los procesos estan en ejecucion
