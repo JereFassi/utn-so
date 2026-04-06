@@ -9,6 +9,7 @@ docs/
 ├── clases/                         # Materiales y clases
 │   ├── Clase 1.pdf                 # Introducción a Arquitectura de Computadoras y Estructuras de Datos
 │   ├── Clase 2.pdf                 # Introducción a Sistemas Operativos
+│   ├── Clase 3.pdf                 # Procesos
 │   └── README.md                   # Guía de materiales de clase
 ├── DataStructures.md               # Guía sobre estructuras de datos
 ├── EstandarPOSIX.md                # Resumen del estándar POSIX
@@ -26,7 +27,7 @@ Ver [clases/README.md](clases/README.md) para más detalles.
 
 - **Clase 1:** Introducción a Arquitectura de Computadoras y Estructuras de Datos
 - **Clase 2:** Introducción a Sistemas Operativos
-
+- **Clase 3:** Procesos
 ### Documentación Técnica
 
 1. **[DataStructures.md](DataStructures.md)**
