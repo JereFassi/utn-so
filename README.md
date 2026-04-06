@@ -37,6 +37,66 @@ utn-so/
 └── README.md
 ```
 
+## 🐧 Tutorial rápido: instalar WSL con Ubuntu en Windows
+
+Si usas Windows pero quieres trabajar con un entorno Linux, puedes instalar **WSL (Windows Subsystem for Linux)** y usar **Ubuntu** dentro de Windows.
+
+1. **Abrir PowerShell como administrador**  
+   Busca `PowerShell` en el menú Inicio, haz clic derecho y selecciona **"Ejecutar como administrador"**.
+
+2. **Instalar WSL y Ubuntu**  
+   Ejecuta este comando:
+
+   ```powershell
+   wsl --install
+   ```
+
+   Esto habilita WSL e instala Ubuntu por defecto.
+
+3. **Reiniciar la computadora**  
+   Si Windows lo solicita, reinicia para completar la instalación.
+
+4. **Abrir Ubuntu por primera vez**  
+   Desde el menú Inicio, abre `Ubuntu`. La primera vez te pedirá crear:
+   - un nombre de usuario
+   - una contraseña
+
+5. **Verificar que Ubuntu quedó instalada**  
+   Puedes comprobarlo con:
+
+   ```powershell
+   wsl -l -v
+   ```
+
+   Deberías ver `Ubuntu` en la lista.
+
+6. **Entrar a Ubuntu**  
+   Luego puedes abrir Ubuntu desde el menú Inicio o ejecutando:
+
+   ```powershell
+   wsl
+   ```
+
+7. **Actualizar paquetes dentro de Ubuntu**  
+   Ya dentro de Ubuntu, conviene ejecutar:
+
+   ```bash
+   sudo apt update
+   sudo apt upgrade
+   ```
+
+8. **Clonar este repositorio desde Ubuntu**  
+   Una vez dentro de la terminal de Ubuntu:
+
+   ```bash
+   git clone https://github.com/JereFassi/utn-so.git
+   cd utn-so
+   ```
+
+Documentación oficial:
+- [Instalar WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [Usar VS Code con WSL](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode)
+
 ## ⚙️ Requisitos Previos - Ubuntu
 
 Para ejecutar los ejemplos, asegúrate de tener instalado:
