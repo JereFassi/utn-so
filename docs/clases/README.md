@@ -10,6 +10,9 @@ Este directorio contiene los archivos PDF correspondientes a las clases del curs
 - **Clase 2**: Introducción a Sistemas Operativos
   [Clase 2.pdf](Clase%202.pdf)
 
+- **Clase 3**: Procesos
+  [Clase 3.pdf](Clase%203.pdf)
+
 ## 📝 Descripción
 
 Cada archivo PDF incluye los temas tratados en las clases, con ejemplos y explicaciones detalladas para facilitar el aprendizaje. Estos documentos son un complemento al código y ejercicios prácticos disponibles en el repositorio.
