@@ -15,6 +15,7 @@ docs/
 ├── EstandarPOSIX.md                # Resumen del estándar POSIX
 ├── MultiLevelPageTable.md          # Explicación de tablas de páginas multinivel
 ├── MultitaskingAndTimesharing.md   # Explicación de conceptos de multitarea y tiempo compartido
+├── PlanificacionCPUContextSwitches.md # Guía práctica con vmstat y /proc
 └── README.md                       # Este archivo
 ```
 
@@ -57,6 +58,12 @@ Ver [clases/README.md](clases/README.md) para más detalles.
      - Contexto histórico
      - Uso moderno
      - Similitudes y diferencias
+
+5. **[PlanificacionCPUContextSwitches.md](PlanificacionCPUContextSwitches.md)**
+
+   - Guía práctica para observar cambios de contexto en Ubuntu/WSL.
+   - Incluye comandos con `vmstat`, `/proc/<PID>/status`, `sleep` y `yes`.
+   - Resume los campos principales para comentar durante la demostración.
 
 ## 🔍 Cómo Usar Esta Documentación
 
